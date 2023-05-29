@@ -1,0 +1,58 @@
+class Automovel:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+
+    def acelerar(self):
+        raise NotImplementedError("Método acelerar não implementado.")
+
+    def frear(self):
+        raise NotImplementedError("Método frear não implementado.")
+
+
+class Carro(Automovel):
+    def acelerar(self):
+        print("O carro está acelerando.")
+
+    def frear(self):
+        print("O carro está freando.")
+
+
+class Moto(Automovel):
+    def acelerar(self):
+        print("A moto está acelerando.")
+
+    def frear(self):
+        print("A moto está freando.")
+
+
+class Caminhao(Automovel):
+    def acelerar(self):
+        print("O caminhão está acelerando.")
+
+    def frear(self):
+        print("O caminhão está freando.")
+
+
+class Bicicleta(Automovel):
+    def acelerar(self):
+        print("A bicicleta está acelerando.")
+
+    def frear(self):
+        print("A bicicleta está freando.")
+
+carro = Carro("Ford", "Fiesta")
+carro.acelerar()
+carro.frear()
+
+moto = Moto("Honda", "CB500")
+moto.acelerar()
+moto.frear()
+
+caminhao = Caminhao("Volvo", "FH")
+caminhao.acelerar()
+caminhao.frear()
+
+bicicleta = Bicicleta("Caloi", "10")
+bicicleta.acelerar()
+bicicleta.frear()
