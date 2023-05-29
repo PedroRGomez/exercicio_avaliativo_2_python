@@ -1,0 +1,31 @@
+def realizar_backup(principal, backup):
+    backup.update(principal)  
+    print("Backup realizado:", backup)
+    principal.clear()  
+
+
+def inserir_dado(principal, backup, chave, valor):
+    principal[chave] = valor  
+    print("Dado inserido:", chave, "=", valor)
+    if len(principal) == 5:
+        print("Dicionário principal antes do backup:", principal)
+        realizar_backup(principal, backup)
+
+
+
+principal = {}
+backup = {}
+
+while True:
+    chave = input("Digite a chave (ou 'sair' para encerrar): ")
+    if chave == "sair":
+        break
+    valor = input("Digite o valor: ")
+    inserir_dado(principal, backup, chave, valor)
+
+
+if principal:
+    print("Dicionário principal antes do backup final:", principal)
+    realizar_backup(principal, backup)
+
+print("Programa encerrado.")
