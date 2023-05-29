@@ -1,0 +1,95 @@
+class Produto:
+    def __init__(self, nome, preco, codigo):
+        self.nome = nome
+        self.preco = preco
+        self.codigo = codigo
+
+    def calcular_preco_final(self):
+        raise NotImplementedError("Método calcular_preco_final não implementado.")
+
+    def exibir_informacoes(self):
+        raise NotImplementedError("Método exibir_informacoes não implementado.")
+
+
+class ProdutoEletronico(Produto):
+    def __init__(self, nome, preco, codigo, garantia):
+        super().__init__(nome, preco, codigo)
+        self.garantia = garantia
+
+    def calcular_preco_final(self):
+        return self.preco * 1.10  #acrescimo
+
+    def exibir_informacoes(self):
+        print("Produto Eletrônico:")
+        print("Nome:", self.nome)
+        print("Preço:", self.preco)
+        print("Código:", self.codigo)
+        print("Garantia:", self.garantia)
+
+
+class ProdutoAlimenticio(Produto):
+    def __init__(self, nome, preco, codigo, data_validade):
+        super().__init__(nome, preco, codigo)
+        self.data_validade = data_validade
+
+    def calcular_preco_final(self):
+        return self.preco * 0.90  #desconto
+
+    def exibir_informacoes(self):
+        print("Produto Alimentício:")
+        print("Nome:", self.nome)
+        print("Preço:", self.preco)
+        print("Código:", self.codigo)
+        print("Data de Validade:", self.data_validade)
+
+
+class ProdutoVestuario(Produto):
+    def __init__(self, nome, preco, codigo, tamanho):
+        super().__init__(nome, preco, codigo)
+        self.tamanho = tamanho
+
+    def calcular_preco_final(self):
+        return self.preco  #n muda o preço
+
+    def exibir_informacoes(self):
+        print("Produto de Vestuário:")
+        print("Nome:", self.nome)
+        print("Preço:", self.preco)
+        print("Código:", self.codigo)
+        print("Tamanho:", self.tamanho)
+
+
+#menu com instancias
+def exibir_menu():
+    print("Menu:")
+    print("1. Produto Eletrônico")
+    print("2. Produto Alimentício")
+    print("3. Produto de Vestuário")
+    opcao = input("Escolha uma opção (1-3): ")
+    if opcao == '1':
+        nome = input("Digite o nome do produto eletrônico: ")
+        preco = float(input("Digite o preço do produto eletrônico: "))
+        codigo = input("Digite o código do produto eletrônico: ")
+        garantia = input("Digite a garantia do produto eletrônico: ")
+        produto = ProdutoEletronico(nome, preco, codigo, garantia)
+    elif opcao == '2':
+        nome = input("Digite o nome do produto alimentício: ")
+        preco = float(input("Digite o preço do produto alimentício: "))
+        codigo = input("Digite o código do produto alimentício: ")
+        data_validade = input("Digite a data de validade do produto alimentício: ")
+        produto = ProdutoAlimenticio(nome, preco, codigo, data_validade)
+    elif opcao == '3':
+        nome = input("Digite o nome do produto de vestuário: ")
+        preco = float(input("Digite o preço do produto de vestuário: "))
+        codigo = input("Digite o código do produto de vestuário: ")
+        tamanho = input("Digite o tamanho do produto de vestuário: ")
+        produto = ProdutoVestuario(nome, preco, codigo, tamanho)
+    else:
+        print("Opção inválida.")
+        return
+
+    produto.exibir_informacoes()
+    print("Preço final:", produto.calcular_preco_final())
+
+
+exibir_menu()
